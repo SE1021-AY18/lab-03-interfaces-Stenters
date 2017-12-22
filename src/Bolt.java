@@ -1,9 +1,21 @@
+/*
+ * SE1021 - 061
+ * Winter 2017-2018
+ * Lab 3 - Interfaces
+ * Name - Stuart Enters
+ * Created: 12/7/2016
+ */
 import java.text.DecimalFormat;
 
+/**
+ * Creates a bolt part and calculates weight and cost
+ * @author enterss
+ * @version 1.0
+ */
 public class Bolt implements Part {
 
-    public static final double LBS_MULTIPLIER = 0.05;
-    public static final double USD_MULTIPLIER = 1;
+    private static final double LBS_MULTIPLIER = 0.05;
+    private static final double USD_MULTIPLIER = 1;
     private double diameterInches;
     private double lengthInches;
 

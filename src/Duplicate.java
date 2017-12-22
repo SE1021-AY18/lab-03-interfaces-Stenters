@@ -1,11 +1,23 @@
+/*
+ * SE1021 - 061
+ * Winter 2017-2018
+ * Lab 3 - Interfaces
+ * Name - Stuart Enters
+ * Created: 12/7/2016
+ */
 import java.text.DecimalFormat;
 
+/**
+ * creates a number of duplicates of the same part
+ * @author enterss
+ * @version 1.0
+ */
 public class Duplicate implements Part{
 
-    public static final double REDUCTION_FACTOR1 = .95;
-    public static final double REDUCTION_FACTOR2 = .9;
-    public static final int USD_THRESHOLD1 = 5;
-    public static final int USD_THRESHOLD2 = 10;
+    private static final double REDUCTION_FACTOR1 = .95;
+    private static final double REDUCTION_FACTOR2 = .9;
+    private static final int USD_THRESHOLD1 = 5;
+    private static final int USD_THRESHOLD2 = 10;
     private DecimalFormat costFormat = new DecimalFormat("0.00");
     private DecimalFormat weightFormat = new DecimalFormat("0.###");
     private Part identicalPart;

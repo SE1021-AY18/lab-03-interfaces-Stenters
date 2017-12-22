@@ -1,9 +1,21 @@
+/*
+ * SE1021 - 061
+ * Winter 2017-2018
+ * Lab 3 - Interfaces
+ * Name - Stuart Enters
+ * Created: 12/7/2016
+ */
 import java.text.DecimalFormat;
 
+/**
+ * Creates a sheet metal part and calculates weight and cost
+ * @author enterss
+ * @version 1.0
+ */
 public class SheetMetal implements Part {
 
-    public static final double LBS_MULTIPLIER = 0.1;
-    public static final double USD_MULTIPLIER = 0.50;
+    private static final double LBS_MULTIPLIER = 0.1;
+    private static final double USD_MULTIPLIER = 0.50;
     private double lengthInches;
     private double thicknessInches;
     private double widthInches;

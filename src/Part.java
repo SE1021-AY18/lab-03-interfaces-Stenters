@@ -1,3 +1,17 @@
+/*
+ * SE1021 - 061
+ * Winter 2017-2018
+ * Lab 3 - Interfaces
+ * Name - Stuart Enters
+ * Created: 12/7/2016
+ */
+
+
+/**
+ * An interface for all parts
+ * @author enterss
+ * @version 1.0
+ */
 public interface Part {
 
     /**

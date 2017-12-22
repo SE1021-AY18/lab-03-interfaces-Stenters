@@ -1,9 +1,21 @@
+/*
+ * SE1021 - 061
+ * Winter 2017-2018
+ * Lab 3 - Interfaces
+ * Name - Stuart Enters
+ * Created: 12/7/2016
+ */
+
 import java.text.DecimalFormat;
 import java.util.ArrayList;
 
+/**
+ * Creates an assembly made out of parts
+ * @author enterss
+ * @version 1.0
+ */
 public class Assembly implements Part{
-
-    public static final double USD_PER_SUB_PART = .25;
+    private static final double USD_PER_SUB_PART = .25;
     private DecimalFormat costFormat = new DecimalFormat("0.00");
     private DecimalFormat weightFormat = new DecimalFormat("0.###");
     private String name;
@@ -43,30 +55,28 @@ public class Assembly implements Part{
     /**
      * get the weight of the part
      * @return the weight
-     */
+ */
     public double getWeight(){
         double weight = 0;
-        for (Part part: subParts
-                ) {
+        for (Part part: subParts) {
             weight += part.getWeight();
         }
         weightFormat.format(weight);
         return weight;
     }
 
-    /**
-     * print the bill of materials for the part
-     */
+ /**
+ * print the bill of materials for the part
+ */
     public void printBillOfMaterials(){
         String buffer = "";
-        for (Part part: subParts
-                ) {
+        for (Part part: subParts) {
             buffer += "Part: " + part.getName() + "\n" +
                     "Cost: $" + costFormat.format(part.getCost()) + "\n" +
                     "Weight: " + weightFormat.format(part.getWeight()) + " lbs\n";
         }
         buffer += "Total cost: $" + costFormat.format(getCost()) + "\n"+
-                  "Total weight: " + weightFormat.format(getWeight()) + " lbs" ;
+                  "Total weight: " + weightFormat.format(getWeight()) + " lbs";
         System.out.println("==========================\n" +
                 getName() + "\n" +
                 "==========================\n" +
