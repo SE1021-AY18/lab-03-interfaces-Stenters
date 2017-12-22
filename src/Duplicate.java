@@ -6,8 +6,8 @@ public class Duplicate implements Part{
     public static final double REDUCTION_FACTOR2 = .9;
     public static final int USD_THRESHOLD1 = 5;
     public static final int USD_THRESHOLD2 = 10;
-    private DecimalFormat costFormat = new DecimalFormat(); //TODO
-    private DecimalFormat weightFormat = new DecimalFormat(); //TODO
+    private DecimalFormat costFormat = new DecimalFormat("0.00");
+    private DecimalFormat weightFormat = new DecimalFormat("0.###");
     private Part identicalPart;
     private int numDuplicates;
 
@@ -24,11 +24,12 @@ public class Duplicate implements Part{
      */
     public double getCost(){
         double cost = numDuplicates * identicalPart.getCost();
-        if (cost >= USD_THRESHOLD2){
+        if (numDuplicates >= USD_THRESHOLD2){
             cost *= REDUCTION_FACTOR2;
-        }else if(cost >= USD_THRESHOLD1){
+        }else if(numDuplicates >= USD_THRESHOLD1){
             cost *= REDUCTION_FACTOR1;
         }
+        costFormat.format(cost);
         return cost;
     }
 
@@ -45,7 +46,9 @@ public class Duplicate implements Part{
      * @return the weight
      */
     public double getWeight(){
-        return numDuplicates * identicalPart.getWeight();
+        double weight = numDuplicates * identicalPart.getWeight();
+        weightFormat.format(weight);
+        return weight;
     }
 
     /**
@@ -57,10 +60,10 @@ public class Duplicate implements Part{
                 "==========================\n" +
                 "Duplicate part: " + identicalPart.getName() + "\n" +
                 "Copies: " + numDuplicates + "\n" +
-                "Individual cost: $" + identicalPart.getCost() + "\n" +
-                "Individual weight: " + identicalPart.getWeight() + " lbs\n" +
-                "Total cost: $" + getCost() + "\n" +
-                "Total weight: " + getWeight() + " lbs");
+                "Individual cost: $" + costFormat.format(identicalPart.getCost()) + "\n" +
+                "Individual weight: " + weightFormat.format(identicalPart.getWeight()) + " lbs\n" +
+                "Total cost: $" + costFormat.format(getCost()) + "\n" +
+                "Total weight: " + weightFormat.format(getWeight()) + " lbs");
         identicalPart.printBillOfMaterials();
     }
 

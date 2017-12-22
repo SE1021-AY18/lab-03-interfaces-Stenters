@@ -1,3 +1,5 @@
+import java.text.DecimalFormat;
+
 public class Bolt implements Part {
 
     public static final double LBS_MULTIPLIER = 0.05;
@@ -16,7 +18,7 @@ public class Bolt implements Part {
      * @return the cost
      */
     public double getCost(){
-        return (Math.round(100 * USD_MULTIPLIER * lengthInches * diameterInches) / 100);
+        return USD_MULTIPLIER * lengthInches * diameterInches;
     }
 
     /**
@@ -32,7 +34,6 @@ public class Bolt implements Part {
      * @return the weight
      */
     public double getWeight(){
-        return (Math.round(100 * ) / 100);
         return LBS_MULTIPLIER * lengthInches * Math.pow(diameterInches,2);
     }
 
@@ -40,13 +41,15 @@ public class Bolt implements Part {
      * print the bill of materials for the part
      */
     public void printBillOfMaterials(){
+        DecimalFormat costFormat = new DecimalFormat("0.00");
+        DecimalFormat weightFormat = new DecimalFormat("0.###");
         System.out.println("==========================\n" +
                 getName() + "\n" +
                 "==========================\n" +
                 "Diameter: " + diameterInches + " inches\n" +
                 "Length: " + lengthInches + " inches\n" +
-                "Cost: $" + getCost() + "\n" +
-                "Weight:" + getWeight() + " lbs");
+                "Cost: $" + costFormat.format(getCost()) + "\n" +
+                "Weight: " + weightFormat.format(getWeight()) + " lbs");
     }
 
 }

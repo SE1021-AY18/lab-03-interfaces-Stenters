@@ -1,3 +1,5 @@
+import java.text.DecimalFormat;
+
 public class SheetMetal implements Part {
 
     public static final double LBS_MULTIPLIER = 0.1;
@@ -18,7 +20,7 @@ public class SheetMetal implements Part {
      * @return the cost
      */
     public double getCost(){
-        return (Math.round(100 * USD_MULTIPLIER * lengthInches * widthInches * thicknessInches) / 100);
+        return USD_MULTIPLIER * lengthInches * widthInches * thicknessInches;
     }
 
     /**
@@ -34,21 +36,23 @@ public class SheetMetal implements Part {
      * @return the weight
      */
     public double getWeight(){
-        return (Math.round(100 * LBS_MULTIPLIER * lengthInches * widthInches * thicknessInches) / 100);
+        return LBS_MULTIPLIER * lengthInches * widthInches * thicknessInches;
     }
 
     /**
      * print the bill of materials for the part
      */
     public void printBillOfMaterials(){
+        DecimalFormat costFormat = new DecimalFormat("0.00");
+        DecimalFormat weightFormat = new DecimalFormat("0.###");
         System.out.println("==========================\n" +
-        getName() + "\n" +
-        "==========================\n" +
-        "Length: " + lengthInches + " inches\n" +
-        "Width: " + widthInches + " inches\n" +
-        "Thickness: " + thicknessInches + " inches\n" +
-        "Cost: $" + getCost() + "\n" +
-        "Weight:" + getWeight() + "lbs");
+                getName() + "\n" +
+                "==========================\n" +
+                "Length: " + lengthInches + " inches\n" +
+                "Width: " + widthInches + " inches\n" +
+                "Thickness: " + thicknessInches + " inches\n" +
+                "Cost: $" + costFormat.format(getCost()) + "\n" +
+                "Weight: " + weightFormat.format(getWeight()) + " lbs");
     }
 
 }
